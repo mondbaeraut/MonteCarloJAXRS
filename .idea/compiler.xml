@@ -22,11 +22,11 @@
         <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
         <outputRelativeToContentRoot value="true" />
         <processorPath useClasspath="true" />
-        <module name="RESTfulExample" />
+        <module name="MonteCarloJAXRS" />
       </profile>
     </annotationProcessing>
     <bytecodeTargetLevel>
-      <module name="RESTfulExample" target="1.6" />
+      <module name="MonteCarloJAXRS" target="1.6" />
     </bytecodeTargetLevel>
   </component>
 </project>

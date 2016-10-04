@@ -1,6 +1,6 @@
 <component name="ArtifactManager">
   <artifact type="exploded-war" name="MonteCarloService:war exploded">
-    <output-path>$PROJECT_DIR$/target/RESTfulExample</output-path>
+    <output-path>$PROJECT_DIR$/target/MonteCarloJAXRS</output-path>
     <root id="root">
       <element id="directory" name="WEB-INF">
         <element id="directory" name="classes">
