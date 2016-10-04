@@ -4,20 +4,22 @@ import javax.ws.rs.GET;
 import javax.ws.rs.Path;
 import javax.ws.rs.PathParam;
 import javax.ws.rs.core.Response;
- 
+import java.math.BigDecimal;
+import java.math.BigInteger;
+
 @Path("/monte")
 public class MontaCarloService {
  
 	@GET
 	@Path("/{param}")
-	public Response getMsg(@PathParam("param") Integer count) {
+	public Response getMsg(@PathParam("param") long count) {
 
 		int dropsHit = 0;
 		long startTime = System.currentTimeMillis();
-
-		for (int i = 0; i < count; ++i) {
-			double x = Math.random()*2-1.0;
-			double y = Math.random()*2-1.0;
+	
+		for (int i = 0; i < count; i++) {
+			double x = Math.random();
+			double y = Math.random();
 
 			if (Math.hypot(x, y) <= 1) {
 				dropsHit++;
