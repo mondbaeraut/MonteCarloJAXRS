@@ -1,16 +1,18 @@
 package controller;
 
+import java.util.Collection;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Set;
 
 /**
  * Created by Niklas on 07/10/16.
  */
 public class WorkerController {
-    private static HashMap<String, Worker> workerHashMap = new HashMap<String, Worker>();
+    private HashMap<String, Worker> workerHashMap = new HashMap<String, Worker>();
 
-    public static Set<String> getWorker(){
-        return workerHashMap.keySet();
+    public Collection<Worker> getWorker(){
+        return workerHashMap.values();
     }
 
     public boolean registerAddress(String ip){

@@ -43,7 +43,7 @@ public class Worker implements Runnable{
     }
 
     private MonteCarloDTO calculatePIForAllInstances() throws IOException, JAXBException {
-        URL url = new URL("http://" + ipAddress+ "/monte/monte" + rounds);
+        URL url = new URL("http://" + ipAddress+ "/monte/monte/slave/" + rounds);
         MonteCarloDTO monteCarloDTOtemp = null;
         HttpURLConnection connection = (HttpURLConnection)url.openConnection();
         connection.setRequestMethod("GET");
