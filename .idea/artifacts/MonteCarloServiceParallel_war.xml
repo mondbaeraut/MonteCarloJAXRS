@@ -1,0 +1,8 @@
+<component name="ArtifactManager">
+  <artifact type="war" build-on-make="true" name="MonteCarloServiceParallel:war">
+    <output-path>$PROJECT_DIR$/classes/artifacts/MonteCarloServiceParallel_war</output-path>
+    <root id="archive" name="MonteCarloServiceParallel_war.war">
+      <element id="artifact" artifact-name="MonteCarloJAXRS:war exploded" />
+    </root>
+  </artifact>
+</component>

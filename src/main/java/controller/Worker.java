@@ -13,6 +13,7 @@ import java.net.URL;
 
 /**
  * Created by Niklas on 06/10/16.
+ *
  */
 public class Worker implements Runnable{
     private static String ipAddress = "";
@@ -43,7 +44,7 @@ public class Worker implements Runnable{
     }
 
     private MonteCarloDTO calculatePIForAllInstances() throws IOException, JAXBException {
-        URL url = new URL("http://" + ipAddress+ "/monte/monte/slave/" + rounds);
+        URL url = new URL("http://" + ipAddress+ ":8080/MonteCarloServiceParallel_war/monte/monte/slave/" + rounds);
         MonteCarloDTO monteCarloDTOtemp = null;
         HttpURLConnection connection = (HttpURLConnection)url.openConnection();
         connection.setRequestMethod("GET");

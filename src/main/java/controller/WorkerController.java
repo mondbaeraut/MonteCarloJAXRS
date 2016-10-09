@@ -2,14 +2,16 @@ package controller;
 
 import java.util.Collection;
 import java.util.HashMap;
-import java.util.List;
-import java.util.Set;
 
 /**
  * Created by Niklas on 07/10/16.
+ *
  */
 public class WorkerController {
     private HashMap<String, Worker> workerHashMap = new HashMap<String, Worker>();
+    private static WorkerController _workerController = null;
+
+    private WorkerController(){}
 
     public Collection<Worker> getWorker(){
         return workerHashMap.values();
@@ -35,5 +37,12 @@ public class WorkerController {
 
     public int getSizeOfWorkerList(){
         return workerHashMap.size();
+    }
+
+    public static WorkerController getInstance() {
+        if (_workerController == null) {
+            _workerController = new WorkerController();
+        }
+        return _workerController;
     }
 }

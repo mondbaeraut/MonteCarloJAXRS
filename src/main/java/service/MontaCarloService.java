@@ -10,6 +10,8 @@ import javax.ws.rs.Path;
 import javax.ws.rs.PathParam;
 import javax.ws.rs.core.Response;
 
+import java.util.LinkedList;
+import java.util.List;
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
 
@@ -27,21 +29,27 @@ public class MontaCarloService {
 				executor.execute(worker);
 			}
 			// Wait until all threads are finish
-			while (!executor.isTerminated()){
+			List<MonteCarloDTO> responseList = new LinkedList<MonteCarloDTO>();
+			while (responseList.size() != WorkerController.getInstance().getWorker().size()) {
+				for (Worker worker : WorkerController.getInstance().getWorker()) {
+					if (worker.getMonteCarloDTO() != null && !worker.getMonteCarloDTO().getWasProcessed()) {
+						worker.getMonteCarloDTO().setWasProcessed(true);
+						responseList.add(worker.getMonteCarloDTO());
+					}
+				}
+			}
 
-			}
 			executor.shutdown();
-			long pi = 0;
+			double pi = 0;
 			long duration = 0;
-			int listSize = 0;
-			for (Worker worker : WorkerController.getInstance().getWorker()) {
-				pi += worker.getMonteCarloDTO().getPi();
-				duration += worker.getMonteCarloDTO().getDuration();
-				listSize++;
+			for (MonteCarloDTO responseDTO : responseList) {
+				pi += responseDTO.getPi();
+				duration += responseDTO.getDuration();
 			}
+
 			MonteCarloDTO result = new MonteCarloDTO();
-			result.setDuration(duration / listSize);
-			result.setPi(pi / listSize);
+			result.setDuration(duration / responseList.size());
+			result.setPi(pi / (double)responseList.size());
 			return Response.status(200).entity(result).build();
 		}
 		return Response.status(200).entity("Size of QUEUE = 0").build();
