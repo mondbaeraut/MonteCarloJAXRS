@@ -22,7 +22,6 @@ public class Worker implements Runnable{
     public Worker() {
     }
 
-
     public static String getIpAddress() {
         return ipAddress;
     }
