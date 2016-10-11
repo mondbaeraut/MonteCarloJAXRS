@@ -4,6 +4,7 @@ import model.MonteCarloDTO;
 
 /**
  * Created by Niklas on 06/10/16.
+ *
  */
 public class MonteCarloCalculator {
 
